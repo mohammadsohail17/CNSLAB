@@ -1,25 +1,24 @@
-# Python3 program to demonstrate Basic Euclidean Algorithm
+#Euclidean Algorithm
+def gcd(a,b):
+    if a==0:
+        return b
+    return gcd(b%a,a)
 
+a=10
+b=15
+print("GCD of a and b is : ",gcd(a,b))
 
-# Function to return gcd of a and b
-def gcd(a, b):
-	if a == 0:
-		return b
+#Advanced Euclidean Algorithm
 
-	return gcd(b % a, a)
-
-# Driver code
-
-a = 10
-b = 15
-print("gcd(", a, ",", b, ") = ", gcd(a, b))
-
-a = 35
-b = 10
-print("gcd(", a, ",", b, ") = ", gcd(a, b))
-
-a = 31
-b = 2
-print("gcd(", a, ",", b, ") = ", gcd(a, b))
-
-# Code Contributed By Mohit Gupta_OMG <(0_o)>
+def gcdExtended(a,b):
+    if a==0:
+        return b,0,1
+    gcd,x1,y1=gcdExtended(b%a,a)
+    x=y1-(b//a)*x1
+    y=x1
+    return gcd,x,y
+a = int(input("Enter a number: "))
+b = int(input("Enter another number: "))
+g, x, y = gcdExtended(a, b)
+print("gcd(", a, ",", b, ") = ", g)
+#print(gcdextended(15,35))
